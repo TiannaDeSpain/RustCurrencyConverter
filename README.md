@@ -1,29 +1,27 @@
 # Overview
 
-{Important!  Do not say in this section that this is college assignment.  Talk about what you are trying to accomplish as a software engineer to further your learning.}
+This program is written to convert monetary value between US Dollars, Pesos and Euros and Yen. The user inputs what the money is originally, what currency they would like to convert to and then enter the amount. The software then calculates and outputs the value in the new currency.
 
-{Provide a description the software that you wrote to demonstrate the Rust language.}
-
-{Describe your purpose for writing this software.}
-
-{Provide a link to your YouTube demonstration.  It should be a 4-5 minute demo of the software running and a walkthrough of the code.  Focus should be on sharing what you learned about the language syntax.}
+I wrote this sofware as my first ever Rust project, in hopes to gain a better understanding of Rust and its abilities.
 
 [Software Demo Video](http://youtube.link.goes.here)
 
 # Development Environment
 
-{Describe the tools that you used to develop the software}
+This software was written with Visual Studio Code and run with CodeRunner V0.11.6.
 
-{Describe the programming language that you used and any libraries.}
+Developed in rustc 1.58.1 using standard input/output with collection: 
+    - HashMap
 
 # Useful Websites
 
 * [Operon- Rust Starter Pack](https://opheron.github.io/rust-starter-pack/)
-* [Web Site Name](http://url.link.goes.here)
+* [Wikipedia](https://en.wikipedia.org/wiki/Rust_(programming_language)
+* [Rust Documentation](https://www.rust-lang.org/)
+* [The Rust Reference](https://doc.rust-lang.org/reference/introduction.html)
+* [Educative.io](https://www.educative.io/edpresso/how-to-write-functions-in-rust)
 
 # Future Work
-
-{Make a list of things that you need to fix, improve, and add in the future.}
-* Item 1
-* Item 2
-* Item 3
+* Create loop of main flow of program so that user can do multipule conversions
+* Add currency symbols to output
+* Use API pull for currency exchange rate information. 
