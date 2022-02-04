@@ -1,23 +1,31 @@
 use std::io;
 use std::collections::HashMap;
 
-fn convert(conversions: &mut HashMap<&str, f64>, amount: f64, letter: &str) -> f64 {
-    match letter {
-      "P" => amount * conversions.get("Pesos").unwrap(),
-      "E" => amount * conversions.get("Euros").unwrap(),
-      "Y" => amount * conversions.get("Yen").unwrap(),
-      "D" => amount * conversions.get("Dollars").unwrap(),
-      _ => amount
-    }
+
+// function to convert oridonal amount to new currency value
+fn convert(conversions: HashMap<&str, f64>, amount: f64, num2: u64) -> f64{
+  if num2 == 1 {
+    return amount * conversions.get("Pesos").unwrap();
+  } else if num2 == 2{
+    return amount * conversions.get("Euros").unwrap();
+  } else if num2 == 3{
+    return amount * conversions.get("Yen").unwrap();
+  } else if num2 == 4{
+    return amount * conversions.get("Dollars").unwrap();
+  } else {
+    return amount;
   }
+}
   
 fn main(){
+    // Prompt for what currency they currently have 
     println!("What currency do you currently have:");
     println!("(1) Pesos");
     println!("(2) Euros");
     println!("(3) Yen");
     println!("(4) US Dollars");
     
+    // store the answer in a variable "num"
     let mut input_text = String::new();
     io::stdin()
       .read_line(&mut input_text)
@@ -25,52 +33,73 @@ fn main(){
       
     let num = input_text.trim().parse::<u64>().expect("That's not a number");
 
-    let mut converstions = HashMap::new();
+    // create data structure to hold conversion numbers
+    let mut conversions = HashMap::new();
 
+    // prompt for what currency they would like to convert to
     println!("What currency do you want to convert to:");
 
     if num == 1{
-      println!("(E) Euros");
-      println!("(Y) Yen");
-      println!("(U) US Dollars");
-      converstions.insert("Dollars", 20.61);
-      converstions.insert("Euros", 0.89);
-      converstions.insert("Yen", 114.73);
+      // prompting only logical answers
+      println!("(2) Euros");
+      println!("(3) Yen");
+      println!("(4) US Dollars");
+      // adding corresponding conversion rates to hashmap
+      conversions.insert("Dollars", 20.61);
+      conversions.insert("Euros", 0.89);
+      conversions.insert("Yen", 114.73);
+      conversions.insert("Pesos", 0.0);
     }else if num ==2{
-      println!("(P) Pesos");
-      println!("(Y) Yen");
-      println!("(U) US Dollars"); 
-      converstions.insert("Dollars", 1.12);
-      converstions.insert("Pesos", 23.18);
-      converstions.insert("Yen", 129.03);
+      // prompting only logical answers
+      println!("(1) Pesos");
+      println!("(3) Yen");
+      println!("(4) US Dollars"); 
+      // adding corresponding conversion rates to hashmap
+      conversions.insert("Dollars", 1.12);
+      conversions.insert("Pesos", 23.18);
+      conversions.insert("Yen", 129.03);
+      conversions.insert("Euros", 0.0);
     }else if num ==3{
-      println!("(P) Pesos");
-      println!("(E) Euros");
-      println!("(U) US Dollars");
-      converstions.insert("Dollars", 0.0087);
-      converstions.insert("Pesos", 0.18);
-      converstions.insert("Euro", 0.0078);
+      // prompting only logical answers
+      println!("(1) Pesos");
+      println!("(2) Euros");
+      println!("(4) US Dollars");
+      // adding corresponding conversion rates to hashmap
+      conversions.insert("Dollars", 0.0087);
+      conversions.insert("Pesos", 0.18);
+      conversions.insert("Euro", 0.0078);
+      conversions.insert("Yen", 0.0);
     }else if num == 4{
-      println!("(P) Pesos");
-      println!("(E) Euros");
-      println!("(Y) Yen");
-      converstions.insert("Pesos", 20.61);
-      converstions.insert("Euros", 0.89);
-      converstions.insert("Yen", 114.73);
+      // prompting only logical answers
+      println!("(1) Pesos");
+      println!("(2) Euros");
+      println!("(3) Yen");
+      // adding corresponding conversion rates to hashmap
+      conversions.insert("Pesos", 20.61);
+      conversions.insert("Euros", 0.89);
+      conversions.insert("Yen", 114.73);
+      conversions.insert("Dollars", 0.0);
     }
     
-    let mut letter = String::new();
+
+    //pulling input from question in if statment - what to convert to
+    let mut input_text = String::new();
     io::stdin()
-      .read_line(&mut letter)
+      .read_line(&mut input_text)
       .expect("Failed to read input");
+    //parsing the string to a number to be used for comparisons 
+    let num2 = input_text.trim().parse::<u64>().expect("That's not a number");
     
+
+    //orgiginal amount to convert 
     println!("Enter amount to convert:");
     let mut amount_text = String::new();
     io::stdin()
       .read_line(&mut amount_text)
       .expect("Failed to read input");
-
+    //parsing the string to a number to be used for calculations 
     let amount = amount_text.trim().parse::<f64>().expect("That's not a number");
 
-    println!("{} is {:.2}", amount, convert(&mut converstions, amount, &mut letter));
+    //printing result
+    println!("{:.2}", convert(conversions, amount, num2));
 }
