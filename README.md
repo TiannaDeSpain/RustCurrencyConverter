@@ -4,7 +4,7 @@ This program is written to convert monetary value between US Dollars, Pesos and 
 
 I wrote this sofware as my first ever Rust project, in hopes to gain a better understanding of Rust and its abilities.
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/EVzPPHaIkL0)
 
 # Development Environment
 

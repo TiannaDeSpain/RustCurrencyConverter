@@ -1,1 +1,4 @@
-  // let mut converted = 0.00;
+
+  let mut conversions = HashMap::new();
+
+  // prompt for what currency they would like to convert to
